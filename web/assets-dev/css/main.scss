@@ -1,0 +1,28 @@
+/* + Mixin imports */
+@import "mixins";
+/* = Mixin imports */
+
+/* + Function imports */
+/* = Function imports */
+
+/* + Variablen (Farben, Fonts, etc) */
+@import "variables";
+/* = Variablen (Farben, Fonts, etc) */
+
+/* + Reset */
+@import "modules/normalize"; /* customized normalize.css v3.0.0 */
+@import "modules/reset"; /* reset/normalize extensions */
+@import "modules/semantic-modal"; /* semantic modal/overlay */
+/* = Reset */
+
+/* + General styles (Typo, Formulare, Tabellen, etc) */
+@import "styles";
+/* = General styles (Typo, Formulare, Tabellen, etc) */
+
+/* + Styles höherer Ordnung (OOCSS – Nicht-modulspezifische oder modulübergreifende Styles) */
+.container { margin-right: 0 auto; width: 100%; max-width: 80%; padding:0 10%; }
+/* = Styles höherer Ordnung (OOCSS – Nicht-modulspezifische oder modulübergreifende Styles) */
+
+/* + Modul Styles */
+@import "modules/responsive-embed"; /* Responsive Container for embed code like iframes */
+/* = Modul Styles */

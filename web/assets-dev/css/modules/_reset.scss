@@ -1,0 +1,27 @@
+/* + Reset Styles and normalize */
+
+html {
+    box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+
+* {
+    -webkit-font-smoothing: antialiased; /* mac font appears bold bug fix*/
+}
+
+html {
+    font-family: sans-serif;
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+}
+
+fieldset {
+    border: none;
+    padding: 0;
+    margin: 0;
+}
