@@ -1,4 +1,4 @@
-(function() {
+(function($, document, window, undefined) {
 
     'use strict';
 

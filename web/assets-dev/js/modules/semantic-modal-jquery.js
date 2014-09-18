@@ -1,4 +1,5 @@
-(function(window, document, undefined) {
+(function() {
+//(function(window, document, undefined) {
 
     'use strict';
 
@@ -7,6 +8,8 @@
         mClose = $('.modal-close'),
         modalOpen = false,
         mOverlay = $('.modal'),
+        mClassOpen = 'modal--opened',
+        mClassClose = 'modal--closed',
         lastFocus;
 
     function modalTarget(modalId){
@@ -15,11 +18,9 @@
             modal = mOverlay.find('.modal-holder');
 
         if (modalOpen == true){
-            console.log('true');
             modalShow(mOverlay, modal);
         } else {
-            console.log('false');
-            modalClose(mOverlay, modal)
+            modalClose(event, mOverlay, modal)
         }
     }
 
@@ -27,34 +28,36 @@
     function modalShow (mOverlay, modal) {
         mOverlay.attr('aria-hidden', 'false');
         modalOpen = true;
+        mOverlay.removeClass(mClassClose);
+        mOverlay.addClass(mClassOpen);
         modal.attr('tabindex', '0');
-        modal.focus();
     }
 
     // binds to both the button click and the escape key to close the modal window
     // but only if modalOpen is set to true
     function modalClose ( event, mOverlay, modal ) {
         if (modalOpen == false && ( !event.keyCode || event.keyCode === 27 ) ) {
-            console.log(mOverlay);
+            mOverlay.removeClass(mClassOpen);
+            mOverlay.addClass(mClassClose);
             mOverlay.attr('aria-hidden', 'true');
             modal.attr('tabindex', '-1');
             modalOpen = false;
-            lastFocus.focus();
         }
     }
 
 
+
+
     // Close modal window by clicking on the overlay
-    mOverlay.on('click', function( e ) {
-        if (e.target == modal.parentNode) {
-            modalClose( e );
-        }
-    }, false);
+    mOverlay.on('click', function() {
+        var modalId = $(this).attr('id');
+        modalOpen = false;
+        modalTarget(modalId, modalOpen);
+    });
 
 
     // open modal by btn click/hit
     mOpen.on('click', function(){
-        console.log('click open');
         var modalId = $(this).data('modal-target');
         modalOpen = true;
         modalTarget(modalId, modalOpen);
@@ -62,29 +65,19 @@
 
     // close modal by btn click/hit
     mClose.on('click', function(){
-        console.log('click close');
         var modalId = $(this).data('modal-target');
         modalOpen = false;
         modalTarget(modalId, modalOpen);
     });
 
 
-
-    // close modal by keydown, but only if modal is open
-    //document.addEventListener('keydown', modalClose);
-
-    // restrict tab focus on elements only inside modal window
-    //window.addEventListener('keypress', focusRestrict);
-
-
-
-
-
-
-
-
-
-
+    $(document).keydown(function(event) {
+        if (modalOpen == true && ( event.keyCode === 27 ) ) {
+            var modalId = $('.'+mClassOpen).attr('id');
+            modalOpen = false;
+            modalTarget(modalId, modalOpen);
+        }
+     });
 
 
 })();
