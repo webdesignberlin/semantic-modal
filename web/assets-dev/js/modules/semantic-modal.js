@@ -1,3 +1,8 @@
+/* Semantic Modal by Michael Seiler-Gerstmann
+ * http://micha.seiler-gerstmann.de
+ * inspired by scottohara
+*/
+
 (function($, document, window, undefined) {
 
     'use strict';
