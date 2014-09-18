@@ -196,10 +196,12 @@ module.exports = function(grunt) {
         uglify: {
             options: {
                 sourceMap: true,
-                sourceMapName: '<%= globalConfig.temp %>/js/main.js.map',
                 sourceMapIncludeSources: true
             },
             scripts: {
+                options: {
+                    sourceMapName: '<%= globalConfig.temp %>/js/main.js.map',
+                },
                 files: {
                     '<%= globalConfig.dest %>/js/main.min.js': [
                         '<%= globalConfig.src %>/js/main.js'
@@ -207,9 +209,12 @@ module.exports = function(grunt) {
                 }
             },
             semanticModal: {
+                options: {
+                    sourceMapName: '<%= globalConfig.temp %>/js/semantic-modal-jquery.js.map',
+                },
                 files: {
                     '<%= globalConfig.dest %>/js/modules/semantic-modal.min.js': [
-                        '<%= globalConfig.src %>/js/modules/semantic-modal.js'
+                        '<%= globalConfig.src %>/js/modules/semantic-modal-jquery.js'
                     ]
                 }
             }
