@@ -34,7 +34,7 @@
 
 
 
-        <button type="button" class="modal-open" data-modal-target="modal-dialog-2">Modal öffnen</button>
+        <button type="button" class="modal-open" data-modal-target="modal-dialog-2">Modal 2 öffnen</button>
 
 
         <section class="modal modal-dialog" id="modal-dialog-2"
@@ -53,11 +53,9 @@
             </div>
         </section>
 
-
-
-
-
-
     </article>
+    <footer class="container">
+        <p><a href="http://micha.seiler-gerstmann.de">Webdesign Berlin, Michael Seiler-Gerstmann</a> | <a href="https://github.com/webdesignberlin/semantic-modal">Find Semantic Modal on Github</a></p>
+    </footer>
 </main>
 <?php include 'inc/_footer.php'; ?>
