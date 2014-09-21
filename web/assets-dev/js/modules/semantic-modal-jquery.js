@@ -1,19 +1,21 @@
-(function() {
-//(function(window, document, undefined) {
+//(function() {
+(function($, window, document, undefined) {
 
     'use strict';
 
     // list out the vars
     var mOpen = $('.modal-open'),
         mClose = $('.modal-close'),
-        modalOpen = false,
         mOverlay = $('.modal'),
         mClassOpen = 'modal--opened',
         mClassClose = 'modal--closed',
+        modalOpen = false,
         lastFocus;
 
-    function modalTarget(modalId){
 
+    // + Modal functions
+    
+    function modalTarget(modalId) {
         var mOverlay = $('#'+modalId),
             modal = mOverlay.find('.modal-holder');
 
@@ -22,6 +24,7 @@
         } else {
             modalClose(event, mOverlay, modal)
         }
+        
     }
 
 
@@ -33,9 +36,10 @@
         modal.attr('tabindex', '0');
     }
 
+
     // binds to both the button click and the escape key to close the modal window
     // but only if modalOpen is set to true
-    function modalClose ( event, mOverlay, modal ) {
+    function modalClose (event, mOverlay, modal) {
         if (modalOpen == false && ( !event.keyCode || event.keyCode === 27 ) ) {
             mOverlay.removeClass(mClassOpen);
             mOverlay.addClass(mClassClose);
@@ -46,7 +50,7 @@
     }
 
 
-
+    // + Eventlistener
 
     // Close modal window by clicking on the overlay
     mOverlay.on('click', function() {
@@ -54,7 +58,6 @@
         modalOpen = false;
         modalTarget(modalId, modalOpen);
     });
-
 
     // open modal by btn click/hit
     mOpen.on('click', function(){
@@ -70,7 +73,7 @@
         modalTarget(modalId, modalOpen);
     });
 
-
+    // close modal by pressing esc
     $(document).keydown(function(event) {
         if (modalOpen == true && ( event.keyCode === 27 ) ) {
             var modalId = $('.'+mClassOpen).attr('id');
